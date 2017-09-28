@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>V-html & v-text</title>
+</head>
+<body>
+<h1>V-html & v-text</h1>
+<hr>
+<div id="app">
+    <ul>
+        <li v-for="item in students">
+            名字：<span v-text="item.name"></span>--年龄：<span v-text="item.age"></span>
+        </li>
+    </ul>
+    <p v-html="myHtml"></p>
+</div>
+
+<script type="text/javascript">
+    var app=new Vue({
+        el:'#app',
+        data:{
+            students:[
+                {name:'Jason1',age:12},
+                {name:'Jason2',age:34},
+                {name:'Jason3',age:2},
+                {name:'Jason4',age:22},
+                {name:'Jason5',age:123}
+            ],
+            myHtml:'<h1>my name is Jsaon.</h1>'
+        },
+        computed:{
+            sortItems:function () {
+                return this.items.sort(sortNumber);
+            }
+        }
+    })
+    //比较大小排序
+    function sortNumber(a,b) {
+        return a-b;
+    }
+</script>
+</body>
+</html>

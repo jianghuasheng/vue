@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>v.directive自定义指令</title>
+</head>
+<body>
+<div id="app">
+    <h1 @click="backBase">v.directive自定义指令</h1>
+    <hr>
+    <div v-jason="color">{{num}}</div>
+    <p><button @click="jiafen">加分</button></p>
+    <p><button @click="jieban">解绑</button></p>
+</div>
+
+<script type="text/javascript">
+//    Vue.directive('jason',function (el,bingding,vnode) {
+////        console.log(el);
+//        console.log(bingding);
+//        console.log(bingding.name);
+//        console.log(bingding.value);
+//        console.log(bingding.expression);
+////        console.log(vnode);
+//        el.style="color:"+bingding.value;
+//    });
+//function jieban() {
+//    app.$destroy()
+//}
+    Vue.directive('jason',{
+        //被绑定
+        bind:function(el){
+            console.log('1 - bind');
+            el.style="color:green";
+        },
+        //绑定到节点
+        inserted:function(){
+            console.log('2 - inserted');
+        },
+        //组件更新
+        update:function(){
+            console.log('3 - update');
+        },
+        //组件更新完成
+        componentUpdated:function(){
+            console.log('4 - componentUpdated');
+        },
+        //解绑
+        unbind:function(el){
+            el.style="color:red";
+            console.log('5 - unbind');
+        }
+    });
+    var app=new Vue({
+        el:'#app',
+        data:{
+            num:10,
+            color:'red'
+        },
+        methods:{
+            backBase:function () {
+                window.location.href='../index.html';
+            },
+            jiafen:function () {
+                this.num++;
+            },
+            jieban:function () {
+                app.$destroy();
+            }
+        }
+    })
+</script>
+</body>
+</html>

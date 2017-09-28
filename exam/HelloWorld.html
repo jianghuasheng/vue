@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>HelloWorld</title>
+    <link rel="stylesheet" href="../css/weui.min.css"/>
+    <script src="../js/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="weui-cells__title">
+        <h2 class="weui-cell">HelloWorld</h2>
+    </div>
+    <div class="weui-cell" id="app">
+        <h3>{{message}}</h3>
+    </div>
+
+<script type="text/javascript">
+    var app=new Vue({
+        el:'#app',
+        data:{
+            message:'hello Vue，my name is Jason!'
+        }
+    })
+</script>
+</body>
+</html>

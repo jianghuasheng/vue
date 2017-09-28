@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>V-for 案例</title>
+</head>
+<body>
+<h1>v-for指令用法</h1>
+<hr>
+<div id="app">
+    <ul>
+        <li v-for="item in sortItems">
+            {{item}}
+        </li>
+        <li v-for="(item,index) in students">
+            {{index+1}}--名字：{{item.name}}--年龄：{{item.age}}
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    var app=new Vue({
+        el:'#app',
+        data:{
+            items:[20,23,18,65,32,19,54,56,41,7],
+            students:[
+                {name:'Jason1',age:12},
+                {name:'Jason2',age:34},
+                {name:'Jason3',age:2},
+                {name:'Jason4',age:22},
+                {name:'Jason5',age:123}
+            ]
+        },
+        computed:{
+            sortItems:function () {
+                return this.items.sort(sortNumber);
+            }
+        }
+    })
+    //比较大小排序
+    function sortNumber(a,b) {
+        return a-b;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>v.extend扩展构造器</title>
+</head>
+<body>
+<div id="app">
+    <h1 @click="backBase">v.extend扩展构造器</h1>
+    <hr>
+    <author></author>
+    <p id="author"></p>
+</div>
+
+<script type="text/javascript">
+    var app=new Vue({
+        el:'#app',
+        methods:{
+            backBase:function () {
+                window.location.href='../index.html';
+            }
+        }
+    });
+    var authorExtend = Vue.extend({
+        template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+        data:function () {
+            return{
+                authorName:'Jason',
+                authorUrl:'http://www.jianghuasheng.cn'
+            }
+        }
+    });
+    new authorExtend().$mount('author');
+    new authorExtend().$mount('#author');
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>v-if & v-show & v-else</title>
+    <link rel="stylesheet" href="../css/weui.min.css"/>
+    <script src="../js/vue.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="weui-cells__title">
+    <h2 class="weui-cell">v-if & v-show & v-else</h2>
+</div>
+<div class="weui-cell" id="app">
+    <h3 v-if="isLogin">你好，Jason!</h3>
+    <h3 v-else style="color:red;">请登陆后再操作！</h3>
+    <h3 v-show="isLogin">我是v-show控制的</h3>
+</div>
+<div class="weui-cell">
+    <section>
+        <p>v-if： 判断是否加载，可以减轻服务器的压力，在需要时加载。</p>
+        <p>v-show：调整css dispaly属性，可以使客户端操作更加流畅。</p>
+    </section>
+</div>
+
+<script type="text/javascript">
+    var app=new Vue({
+        el:'#app',
+        data:{
+            isLogin:true
+        }
+    })
+</script>
+</body>
+</html>
